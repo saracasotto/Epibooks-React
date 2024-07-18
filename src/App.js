@@ -19,7 +19,7 @@ function App() {
         <Welcome />
         <Routes>
         <Route path="/" element={<AllTheBooks searchQuery={searchQuery} />} />   
-        <Route path="/details/:asin" element={<BookDetails />} />   
+        <Route path="/details/:asin" element={<BookDetails />}/>   
         </Routes>
       </Container>
       <MyFooter />
