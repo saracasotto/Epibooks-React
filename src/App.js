@@ -8,6 +8,7 @@ import BookDetails from './components/BookDetails';
 import { Container } from 'react-bootstrap';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import React, { useState } from 'react';
+import NotFound from './components/NotFound';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,7 +20,8 @@ function App() {
         <Welcome />
         <Routes>
         <Route path="/" element={<AllTheBooks searchQuery={searchQuery} />} />   
-        <Route path="/details/:asin" element={<BookDetails />}/>   
+        <Route path="/details/:asin" element={<BookDetails />}/>
+        <Route path="*" element={<NotFound />} />   
         </Routes>
       </Container>
       <MyFooter />
