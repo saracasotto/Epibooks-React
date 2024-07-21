@@ -2,7 +2,11 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MyFooter = () => (
-  <footer className="text-white text-center mt-2 p-3">
+  <footer className="text-white text-center mt-2 p-3" 
+  style={{
+    backgroundColor: '#22908c',
+    opacity: '0.9'}}>
+      
     <div className="container">
       <div className="row">
         <div className="col-md-4 mb-1">

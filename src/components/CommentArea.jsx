@@ -42,7 +42,7 @@ const CommentArea = ({ asin }) => {
   }, [asin])
 
   return (
-    <div className="comment-area text-center">
+    <div className="comment-area" data-testid='comment-area'>
       {isLoading ? <Loading /> : isError ? <Error /> : <CommentList commentsToShow={comments} />}
       <AddComment asin={asin} />
     </div>

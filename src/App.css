@@ -1,109 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-*{
+* {
     box-sizing: border-box;
 }
 
 body {
     font-family: "Barlow", sans-serif;
 }
-.navbar,
-footer{
-    background-color: #22908c;
-    color: white;
-    opacity: 0.9;
-}
-
-.navbar a {
-    color: white;
-    font-weight: 700;
-}
 
 .main {
     padding-top: 3em;
     background-color: #F5F5F5;
 }
-
-.alert {
-    background-color: #f0f0f0 !important;
-    color: #d22e68;
-    border: #d22e68;
-}
-
-.card {
-    margin: 1em auto;
-    min-width: 80%;
-    max-width: 90%;
-    text-align: center;
-    background-color: transparent;
-    padding: 0.5em 0;
-    cursor: pointer;
-    border-radius: 0;
-}
-
-
-.card:hover {
-    box-shadow: 8px 8px 8px  #22908c, -10px -10px 10px white;
-}
-
-
-.card-img-container {
-    height: 300px;
-    margin: 0 auto;
-    padding: 0.9em;
-}
-
-.card-img-top{
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: scale-down;
-}
-
-
-.card .card-title {
-    font-size: 1.2em;
-    overflow: hidden;
-    line-height: 1.2em;
-    height: 2.6em;
-    color: #3d4744;
-}
-
-.card .card-text {
-    font-weight: bold;
-}
-
-
-.list-group-item {
-    overflow-x: hidden;
-}
-
-.list-group-item p{
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-}
-
-.list-group-item p span:first-of-type{
-    color: #007a74;
-    font-weight: bold;
-}
-
-.list-group-item p span:last-of-type{
-    color: #222;
-    width: 70%;
-    text-align: start;
-}
-
-.list-group-item button,
-.list-group-item button:hover  {
-    font-size: 0.7em;
-    font-weight: bold;
-    background-color: #d22e68;
-    border: #d22e68;
-    float: right;
-}
-
 
 .add-comment-form {
     text-align: start;
@@ -119,7 +28,6 @@ footer{
     float: right;
     margin-right: 1em;
 }
-
 
 
 .social-icons a {
