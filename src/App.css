@@ -29,6 +29,13 @@ body {
     margin-right: 1em;
 }
 
+.btn-close,
+.btn-close:focus {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none;
+}
+
 
 .social-icons a {
     padding: 0.5em;

@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { Button, ListGroup, Form } from 'react-bootstrap';
+import AlertComponent from './AlertComponent';
 
 const SingleComment = ({ comment }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedComment, setEditedComment] = useState(comment.comment);
   const [editedRate, setEditedRate] = useState(comment.rate);
+
+  const [alert, setAlert] = useState({
+    show: false,
+    variant: '',
+    message: '',
+  });
 
   const deleteComment = async (asin) => {
     try {
@@ -18,12 +25,20 @@ const SingleComment = ({ comment }) => {
         }
       );
       if (response.ok) {
-        alert('The review has been successfully cancelled');
+        setAlert({
+          show: true,
+          variant: 'success',
+          message: 'The review has been successfully cancelled',
+        });
       } else {
-        throw new Error('The review couldn\'t be cancelled!');
+        throw new Error("The review couldn't be cancelled!");
       }
     } catch (error) {
-      alert(error);
+      setAlert({
+        show: true,
+        variant: 'danger',
+        message: error.message,
+      });
     }
   };
 
@@ -35,24 +50,42 @@ const SingleComment = ({ comment }) => {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY4OWQyYjhmYzBmMzAwMTU1ZTViOTQiLCJpYXQiOjE3MjAzNzg3MDksImV4cCI6MTcyMTU4ODMwOX0.At7r4n44Pl4t3AWIAX-4wozh7rKIHNE9FeX0DGGYfEE',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY4OWQyYjhmYzBmMzAwMTU1ZTViOTQiLCJpYXQiOjE3MjE2Mzc2NjcsImV4cCI6MTcyMjg0NzI2N30.XTSLW2peynNCJd_5KmfTadNlz1dq2kcA2asPPqTsHvs',
           },
           body: JSON.stringify({ comment: editedComment, rate: editedRate }),
         }
       );
       if (response.ok) {
-        alert('The review has been successfully edited');
+        setAlert({
+          show: true,
+          variant: 'success',
+          message: 'The review has been successfully edited',
+        });
         setIsEditing(false);
       } else {
-        throw new Error('The review couldn\'t be edited!');
+        throw new Error("The review couldn't be edited!");
       }
     } catch (error) {
-      alert(error);
+      setAlert({
+        show: true,
+        variant: 'danger',
+        message: error.message,
+      });
     }
+  };
+
+  const handleCloseAlert = () => {
+    setAlert({ ...alert, show: false });
   };
 
   return (
     <ListGroup.Item>
+      <AlertComponent 
+        show={alert.show} 
+        variant={alert.variant} 
+        message={alert.message} 
+        onClose={handleCloseAlert} 
+      />
       {isEditing ? (
         <div>
           <Form.Group controlId="editComment">
@@ -75,13 +108,11 @@ const SingleComment = ({ comment }) => {
             />
           </Form.Group>
           <Button
-            variant="success"
-            className="me-2"
             onClick={() => editComment(comment._id)}
           >
             Save
           </Button>
-          <Button variant="secondary" onClick={() => setIsEditing(false)}>
+          <Button onClick={() => setIsEditing(false)}>
             Cancel
           </Button>
         </div>
@@ -101,10 +132,10 @@ const SingleComment = ({ comment }) => {
               <span className="rating">{comment.rate}</span>
             </p>
           </div>
-          <Button variant="warning" className="me-2" onClick={() => setIsEditing(true)}>
+          <Button onClick={() => setIsEditing(true)}>
             Edit
           </Button>
-          <Button variant="danger" onClick={() => deleteComment(comment._id)}>
+          <Button  onClick={() => deleteComment(comment._id)}>
             Delete
           </Button>
         </div>
