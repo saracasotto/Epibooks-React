@@ -20,10 +20,20 @@ test('renders CommentArea component', () => {
 
 test('changes border color on click', () => {
   render(<App />);
-  const cardElements = screen.getAllByTestId('book-card');
-  expect(cardElements[0]).toHaveStyle('border: 1px solid #22908c');
-  fireEvent.click(cardElements[0]);
-  expect(cardElements[0]).toHaveStyle('border: 2px solid #d22e68');
+  expect(screen.getAllByTestId('book-card')[0]).toHaveStyle('border: 1px solid #22908c');
+  fireEvent.click(screen.getAllByTestId('book-card')[0]);
+  expect(screen.getAllByTestId('book-card')[0]).toHaveStyle('border: 2px solid #d22e68');
 });
 
+
+test('renders no comments', () => {
+  render(<App />)
+  expect(screen.queryAllByTestId('comment-section')).toHaveLength(0)
+})
+
+test('renders comments', async () => {
+  render(<App />)
+  fireEvent.click(screen.getAllByTestId('book-card')[0])
+  expect(await screen.findAllByTestId('comment-section')).not.toHaveLength(0)
+})
 

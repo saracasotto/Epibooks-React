@@ -117,7 +117,7 @@ const SingleComment = ({ comment }) => {
           </Button>
         </div>
       ) : (
-        <div>
+        <div data-testid='comment-section'>
           <p>
             <span>Comment: </span>
             <span className="comment">{comment.comment}</span>
